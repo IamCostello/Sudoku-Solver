@@ -21,6 +21,8 @@ public class SudokuSolverEngine {
         String currentState = sudokuBoardStateManager.generateState(sudokuBoard);
         String nextState = sudokuBoardStateManager.generateState(strategies.get(0).solve(sudokuBoard));
 
+        //TODO 2 basic algos if solution not found use backtracking (eliminate nodes)
+
         while(!sudokuBoardStateManager.isSolved(sudokuBoard) && currentState != nextState){
             currentState = nextState;
             for(var strategy : strategies)
