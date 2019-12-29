@@ -26,6 +26,7 @@ public class Main {
             //sudokuSolverEngine.solve(sudokuBoard);
             sudokuBoardDisplayer.display("Final state", sudokuBoard);
             System.out.println(isSolved ? "Succes" : "Failure");
+            //TODO comment whole code for review
         }
         catch (Exception ex){
             ex.printStackTrace();

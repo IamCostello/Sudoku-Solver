@@ -2,7 +2,7 @@ package com.company.Controller;
 import com.company.SudokuMap;
 
 public class SudokuMapper {
-    public SudokuMap Find(int givenRow, int givenCol)
+    public SudokuMap find(int givenRow, int givenCol)
     {
         SudokuMap sudokuMap = new SudokuMap();
 
