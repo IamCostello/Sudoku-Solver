@@ -27,6 +27,7 @@ public class MarkUpStrategy implements ISudokuStrategy {
         return sudokuBoard;
     }
 
+    //choose values that match in row, column, block
     private int getInteresection(int rowColValues, int blockValues){
         String rowCol = String.valueOf(rowColValues);
         String block = String.valueOf(blockValues);
@@ -75,7 +76,6 @@ public class MarkUpStrategy implements ISudokuStrategy {
             }
         }
 
-        //return Integer.parseInt(Arrays.stream(possible).filter(p -> p!=0).toString());
         int[] possibleValues = Arrays.stream(possible).filter(p -> p!=0).toArray();
         return Integer.parseInt(Arrays.stream(possibleValues).mapToObj(String::valueOf).reduce((a,b) -> a.concat(b)).get());
     }

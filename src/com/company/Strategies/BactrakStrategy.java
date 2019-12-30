@@ -11,6 +11,7 @@ public class BactrakStrategy implements ISudokuStrategy {
         this.sudokuMapper = sudokuMapper;
     }
 
+    //uses state from previous strategies
     @Override
     public int[][] solve(int[][] sudokuBoard) {
         int[][] possibleCellValues = new int[9][9];
@@ -20,7 +21,6 @@ public class BactrakStrategy implements ISudokuStrategy {
             }
         }
 
-        System.out.println("Backtrack");
         solveHelper(sudokuBoard, possibleCellValues,0,0);
         return sudokuBoard;
     }
