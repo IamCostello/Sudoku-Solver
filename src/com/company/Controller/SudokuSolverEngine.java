@@ -1,5 +1,6 @@
 package com.company.Controller;
 
+import com.company.Strategies.BactrakStrategy;
 import com.company.Strategies.ISudokuStrategy;
 import com.company.Strategies.MarkUpStrategy;
 import com.company.Strategies.NakedPairStrategy;
@@ -21,6 +22,7 @@ public class SudokuSolverEngine {
         List<ISudokuStrategy> strategies = new LinkedList<>();
         strategies.add(new MarkUpStrategy(sudokuMapper));
         strategies.add(new NakedPairStrategy(sudokuMapper));
+        strategies.add(new BactrakStrategy(sudokuMapper));
 
         String currentState = sudokuBoardStateManager.generateState(sudokuBoard);
         String nextState = sudokuBoardStateManager.generateState(strategies.get(0).solve(sudokuBoard));
@@ -29,8 +31,9 @@ public class SudokuSolverEngine {
 
         while(!sudokuBoardStateManager.isSolved(sudokuBoard) && !currentState.equals(nextState)){
             currentState = nextState;
-            for(var strategy : strategies)
+            for(var strategy : strategies){
                 nextState = sudokuBoardStateManager.generateState(strategy.solve(sudokuBoard));
+            }
         }
 
         return sudokuBoardStateManager.isSolved(sudokuBoard);
