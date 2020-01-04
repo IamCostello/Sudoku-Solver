@@ -27,11 +27,11 @@ public class BactrakStrategy implements ISudokuStrategy {
 
     private boolean solveHelper(int[][] sudokuBoard, int[][] possibleCellValues, int row, int col){
         //base case to fill board
-        if(sudokuBoard[row].length == col){
+        if(col == 9){
             col = 0;
             row++;
 
-            if(sudokuBoard.length == row)
+            if(row == 9)
                 return true;
         }
 

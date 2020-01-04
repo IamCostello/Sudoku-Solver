@@ -28,7 +28,7 @@ public class SudokuFileReader {
             }
         }
         catch (Exception ex){
-            System.out.println("Selected puzzle does not exist");
+            throw new IllegalArgumentException("Selected puzzle does not exist");
         }
 
         return sudokuBoard;
