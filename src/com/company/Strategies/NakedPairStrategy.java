@@ -16,7 +16,9 @@ public class NakedPairStrategy implements ISudokuStrategy {
     public int[][] solve(int[][] sudokuBoard) {
         for(int row = 0; row<9; row++){
             for(int col = 0; col<9; col++){
-                ;
+                eliminateNakedPairInRow(sudokuBoard, row, col);
+                eliminateNakedPairInCol(sudokuBoard, row, col);
+                eliminateNakedPairInBlock(sudokuBoard, row, col);
             }
         }
 
