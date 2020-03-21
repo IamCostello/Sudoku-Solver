@@ -1,9 +1,6 @@
 package com.company.Controller;
 
-import com.company.Strategies.BactrakStrategy;
-import com.company.Strategies.ISudokuStrategy;
-import com.company.Strategies.MarkUpStrategy;
-import com.company.Strategies.NakedPairStrategy;
+import com.company.Strategies.*;
 
 import java.time.chrono.IsoChronology;
 import java.util.LinkedList;
@@ -23,6 +20,7 @@ public class SudokuSolverEngine {
         List<ISudokuStrategy> strategies = new LinkedList<>();
         strategies.add(new MarkUpStrategy(sudokuMapper));
         strategies.add(new NakedPairStrategy(sudokuMapper));
+        //strategies.add(new BacktrackStrategyNPS(sudokuMapper));
 
         String currentState = sudokuBoardStateManager.generateState(sudokuBoard);
         String nextState = sudokuBoardStateManager.generateState(strategies.get(0).solve(sudokuBoard));
@@ -37,8 +35,8 @@ public class SudokuSolverEngine {
 
         //only use backtracking after eliminating possible cell values
         if(!sudokuBoardStateManager.isSolved(sudokuBoard)){
-            BactrakStrategy bactrakStrategy = new BactrakStrategy(sudokuMapper);
-            bactrakStrategy.solve(sudokuBoard);
+            BacktrackStrategy backtrackStrategy = new BacktrackStrategy(sudokuMapper);
+            backtrackStrategy.solve(sudokuBoard);
         }
 
         return sudokuBoardStateManager.isSolved(sudokuBoard);
